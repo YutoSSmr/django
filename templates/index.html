@@ -1,8 +1,27 @@
-<html>
-<head>
-<title>template test</title>
-</head>
-<body>
-<p>This is template test.</p>
-</body>
-</html>
+{% extends "base/base.html" %}
+{% block title %}
+{% endblock %}
+{% block content %}
+<div class="works-heading">
+    <h4>MENU</h4>
+</div>
+<div class="works" id="sites">
+        
+    <div class="work">
+      <div class="item">
+      <a href="/words">
+      <img src="/media/furniture.png" />
+      </a>
+      </div>
+      <p>WORDS</p>
+    </div>
+    <div class="work">
+      <div class="item">
+      <a href="#">
+      <img src="/media/typing.png" />
+      </a>
+      </div>
+      <p>TRANSLATION</p>
+    </div>
+  </div>
+{% endblock %}

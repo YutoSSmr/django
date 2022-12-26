@@ -1,0 +1,35 @@
+{% load static %}
+<!doctype html>
+<html lang="ar" dir="ltr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href={% static 'style.css' %}/>
+    
+    <title>Sasa.webdesign</title>
+  </head>
+  <body>
+      <div class="wrapper">
+          <div class="main-title">
+            <p class="heading"><a href="/templates">STUDY ENGLISH</a></p>
+            <p class="sub-heading">just fun and learn</p>
+          </div>
+        {% block content %}
+        {% endblock content %}            
+        <div class="contact">
+            <h4 style="border-bottom: solid 1px white;">CONTACT</h4>
+            <p>Mail: <a href=mailto:yuto0703ac@gmail.com>yuto0703ac@gmail.com</a></p>
+            <div class="insta">
+            <a href="https://www.instagram.com/yuto.ac/"><i class="fab fa-instagram"> </i></a>
+            <p>Instagram</p>
+        </div>
+        </div>
+      </div>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src={% static 'script.js' %}></script>
+    <script src="https://kit.fontawesome.com/cfcdcca5f7.js" crossorigin="anonymous"></script>
+  </body>
+</html>
