@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+{% block content %}
+<div class="works-heading" style="height:20px; margin:0;">
+    <h4 style="font-size:50px;">RESULT</h4>
+</div>
+<div class="works" id="sites" style="height:500px; width:100%;">     
+    <div class="work">
+      <div class="item" style="padding:10px; text-align:center;">
+        <h1 style="font-size: 100px;">You got <span style="font-size: 200px;">{{ score }}</span> /5 !!</h1>
+      </div>
+    </div>  
+</div>
+<div style="background:black;">
+  <a href="/index" style="color:white;"> <span style="color:white; font-size:30px;">Menu</span></a>
+</div>
+{% endblock %}

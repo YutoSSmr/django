@@ -1,11 +1,97 @@
-{% extends "base/base.html" %}
-{% block title %}
-{% endblock %}
-{% block content %}
-<div class="works-heading">
-    <h4>{{ results.0.question }}</h4>
-    {% for result in results %}
-    <h4>{{ result.question }}</h4>
-    {% endfor %}
+{% load static %}
+<!doctype html>
+<html lang="ar" dir="ltr">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href='../static/style.css'/>
+    
+    <title>Sasa.webdesign</title>
+  </head>
+<body>
+  <div style="background:black;">
+    <p class="heading"><a href="/index" style="text-decoration:none;"> <span style="color:white;">Qestion{{ questionList.0 }}</span></a></p>
+  </div>
+<div class="works" id="sites">     
+    <div class="work">
+      <div class="item" style="padding:50px; text-align:center;">
+        <h1 style="font-size: 100px; position:ralative;">{{ questionList.1 }}</h1>
+        <div class="circle" id="circle"></div>
+        <div class="incorrect" id="incorrect">✕</div>
+      </div>
+      <div>
+          <button class="button" name="choice" style="width:100%;" value="{{ questionList.3 }}"><p style="width:100%;">1.{{ questionList.2 }}</p></button>
+          <button class="button" name="choice" style="width:100%;" value="{{ questionList.5 }}"><p style="width:100%;">2.{{ questionList.4 }}</p></button>
+          <button class="button" name="choice" style="width:100%;" value="{{ questionList.7 }}"><p style="width:100%;">3.{{ questionList.6 }}</p></button>
+          <button class="button" name="choice" style="width:100%;" value="{{ questionList.9 }}"><p style="width:100%;">4.{{ questionList.8 }}</p></button>
+      </div>
+    </div> 
 </div>
-{% endblock %}
+<form method="POST">{% csrf_token %}
+<div hidden>
+  {{ form.as_p }}
+</div>
+<div style="background:black; height:300px;">
+  <button style="width:300px; height:50px; display:none;" name="next" id="next" value="{{ questionList.0 }}">次の問題</button>
+  <div style="width:100%; text-align:center;">
+    <button type="submit" name="result" style="width:300px; height:50px; display:none;" id="result" value="{{ questionList.10 }}">結果</button>
+  </div>
+</div>
+</form>
+<script type="text/javascript">
+  {% autoescape off %}
+  //問題数
+  var questionNum = document.getElementById('id_questionNum');
+  // スコア
+  var score = document.getElementById('id_score');
+  //押下されたボタンの値を取得
+  document.querySelectorAll('.button').forEach(function (button) {
+    button.addEventListener('click', {value: `${button.value}`, handleEvent: judgeAns});
+  })
+  
+  //解答判定
+  function judgeAns(){
+    //選択された解答
+    ans = `${this.value}`;
+    //正解の場合
+    if (ans == '1') {
+      //次へボタン、〇表示、選択肢非活性
+      document.getElementById('next').style.display='inline';
+      document.getElementById('circle').style.display='inline';
+      for (var i=0; i<4; i++) {
+        document.getElementsByName('choice')[i].disabled=true;
+      };
+      //スコア設定
+      score.setAttribute('value', parseInt(score.getAttribute('value')) + 1);
+
+      // 不正解の場合
+    } else {
+      //次へボタン、✕表示、選択肢非活性
+      document.getElementById('next').style.display='inline';
+      document.getElementById('incorrect').style.display='inline';
+      for (var i=0; i<4; i++) {
+        document.getElementsByName('choice')[i].disabled=true;
+      };
+    }
+    // 問題数設定
+    var num = questionNum.getAttribute('value');
+    questionNum.setAttribute('value', parseInt(questionNum.getAttribute('value')) + 1);
+    
+    console.log('問題数＝' + questionNum.value);
+    console.log('スコア＝' + score.value);
+
+    // 問題が最後の場合
+    if (questionNum.value == 6) {
+      document.getElementById('next').style.display='none';
+      document.getElementById('result').style.display='inline';
+    }
+
+  }
+
+  {% endautoescape %}
+</script>
+</body>
+</html>

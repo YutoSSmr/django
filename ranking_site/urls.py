@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('rank.urls')),
     path('words/', include('rank.urls')),
+    path('', include('rank.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -102,8 +102,32 @@ img {
     display: flex;
 }
 
+.circle{
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    top: 3%;
+    left: 14%;
+    line-height: 80px;
+    border-radius: 50%;
+    border: solid 30px red;
+    position:absolute;
+    display:none;
+}
+
+.incorrect {
+    display: inline-block;
+    font-size: 400px;
+    position:absolute;
+    top: 3%;
+    left: 14%;
+    color:blue;
+    display:none;
+}
+
 .item {
     width: 50%;
+    height: 20px;
 }
 
 .work img:hover {
@@ -178,7 +202,6 @@ i {
 .insta p{
     padding-top: 10px;
 }
-}
 
 @media(max-width: 480px) {
     
@@ -191,7 +214,6 @@ i {
         font-size: 15px;
         font-family: "游明朝", YuMincho, "Hiragino Mincho ProN W3", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif !important;
     }
-
     .wrapper {
         width: 100%;
         margin: 0 auto;
@@ -312,8 +334,19 @@ i {
     .insta p{
         padding-top: 10px;
     }
+    .word_question {
+        font-size: 300px;
+    }
+    .circle{
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        text-align:center;
+        line-height: 80px;
+        border-radius: 50%;
+        border: solid 3px skyblue;
 }
-
+}
 
 
 article,aside,details,figcaption,figure,
